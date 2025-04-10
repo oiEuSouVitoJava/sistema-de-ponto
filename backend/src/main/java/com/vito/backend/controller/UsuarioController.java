@@ -1,6 +1,8 @@
 package com.vito.backend.controller;
 
+import com.vito.backend.DTO.UsuarioCadastroDTO;
 import com.vito.backend.DTO.UsuarioDTO;
+import com.vito.backend.DTO.UsuarioRespostaDTO;
 import com.vito.backend.model.Usuario;
 import com.vito.backend.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +18,11 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @PostMapping
-    public Usuario criarUsuario(@RequestBody Usuario usuario) {
-        return usuarioService.criarUsuario(usuario);
+    public UsuarioRespostaDTO criarUsuario(@RequestBody UsuarioCadastroDTO dto) {
+        return usuarioService.criarUsuario(dto);
     }
+
+
 
     @GetMapping
     public List<UsuarioDTO> listarUsuarios() {

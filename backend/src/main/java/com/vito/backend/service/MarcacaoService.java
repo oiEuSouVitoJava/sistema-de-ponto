@@ -55,4 +55,29 @@ public class MarcacaoService {
             return dto;
         }).collect(Collectors.toList());
     }
+
+    public List<MarcacaoDTO> listar() {
+        return marcacaoRepository.findAll().stream().map(m -> {
+            MarcacaoDTO dto = new MarcacaoDTO();
+            dto.setId(m.getId());
+            dto.setDataHora(m.getDataHora());
+            dto.setObservacao(m.getObservacao());
+
+            if (m.getUsuario() != null) {
+                dto.setUsuarioId(m.getUsuario().getId());
+                dto.setUsuarioNome(m.getUsuario().getNome());
+            }
+
+            if (m.getMeta() != null) {
+                dto.setMetaId(m.getMeta().getId());
+                dto.setMetaNome(m.getMeta().getNome());
+                dto.setMetaDescricao(m.getMeta().getDescricao());
+            }
+
+            return dto;
+        }).toList();
+    }
+
+
+
 }

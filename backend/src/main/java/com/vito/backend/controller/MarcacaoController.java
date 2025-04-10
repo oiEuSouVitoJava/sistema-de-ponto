@@ -21,6 +21,6 @@ public class MarcacaoController {
 
     @GetMapping
     public List<MarcacaoDTO> listarMarcacoes() {
-        return marcacaoService.listarTodas();
+        return marcacaoService.listar();
     }
 }
